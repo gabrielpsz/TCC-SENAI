@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastro de evento</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel id="panel" header="Cadastro de evento" style="margin-bottom:20px">
+		<p:messages id="messages" />
+        	<h:panelGrid columns="2">
+        	
+            	<p:outputLabel for="nome" value="Nome do evento"/><br/>
+					<p:inputText id="nome" value="#{EventoBean.evento.nome}" required="true" requiredMessage="O nome do evento é obrigatório" /><br/>
+            	
+            	<p:outputLabel for="local" value="Local:" /><br/>
+				<p:selectOneMenu id="local" value="#{EventoBean.evento.local}" required="true" requiredMessage="O local do evento é obrigatório" converter="LocalConverter">
+            		<f:selectItem itemLabel="Selecione..." itemValue="" />
+            		<f:selectItems value="#{EventoBean.listLocal}" var="local" itemLabel="#{local.nome}" itemValue="#{local}" />
+            	</p:selectOneMenu><br/>
+            	
+            	<p:outputLabel for="modalidade" value="Modalidade:" /><br/>
+            	<p:selectOneMenu id="modalidade" value="#{EventoBean.evento.modalidade}" required="true" requiredMessage="A modalidade do evento é obrigatória" converter="ModalidadeConverter">
+            		<f:selectItem itemLabel="Selecione..." itemValue="" />
+            		<f:selectItems value="#{EventoBean.listModalidade}" var="modalidade" itemLabel="#{modalidade.tipo}" itemValue="#{modalidade}"/>
+            	</p:selectOneMenu><br/>
+            	
+            	<p:outputLabel for="dataInicio" value="Data de inicio" /><br/>
+            	<p:calendar id="dataInicio" value="#{EventoBean.evento.dataInicio}" required="true" pattern="dd-MM-yyyy" mask="true" requiredMessage="A data de inicio é obrigatória"/><br/>
+            	
+            	<p:outputLabel for="dataTermino" value="Data de termino" /><br/>
+            	<p:calendar id="dataTermino" value="#{EventoBean.evento.dataTermino}" required="true" pattern="dd-MM-yyyy" mask="true" requiredMessage="A data de inicio é obrigatória"/><br/> 
+            	     
+            	<p:outputLabel for="empresaResponsavel" value="Empresa responsavel" /><br/>
+            	<p:inputText id="empresaResponsavel" value="#{EventoBean.evento.empresaResponsavel}"/><br/>
+            	
+            	<p:outputLabel for="valorIngresso" value="Valor do ingresso" /><br/><br/>
+            	<p:spinner id="valorIngresso" value="#{EventoBean.evento.valorIngressoEvento}" prefix="R$ " />    
+            </h:panelGrid>
+       </p:panel>
+       
+            <p:commandButton value="Cadastrar" update="panel" action="#{EventoBean.salvar}" />	    
+            <p:commandButton value="Voltar" update="panel" action="#{EventoBean.voltar()}" immediate="true"/>	
+            
+	</h:form>	
+</h:body>
+</html>

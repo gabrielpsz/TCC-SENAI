@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Listar usuários</title>
+</h:head>
+<h:body>	
+	<h:form id="form">
+	<p:messages id="messages" />
+	<p:dataTable var="usuarios" value="#{UsuarioBean.listUsuario}" selectionMode="single"  selection="#{UsuarioBean.usuarioSelecionado}" rowKey="#{usuarios.idUsuario}">
+        <f:facet name="header">
+            Lista de usuários
+        </f:facet>
+        <p:column headerText="Id">
+            <h:outputText value="#{usuarios.idUsuario}" />
+        </p:column>
+        <p:column headerText="Nome:">
+            <h:outputText value="#{usuarios.nome}" />
+        </p:column>
+        <p:column headerText="CPF::">
+            <h:outputText value="#{usuarios.cpf}" />
+        </p:column>
+        <p:column headerText="E-mail:">
+            <h:outputText value="#{usuarios.email}" />
+        </p:column>
+        <p:column headerText="Data de nascimento:">
+            <h:outputText value="#{usuarios.dataNascimento}" />
+        </p:column>
+        <p:column headerText="Telefone residencial">
+            <h:outputText value="#{usuarios.telefoneResidencial}" />
+        </p:column>
+        <p:column headerText="Celular:">
+            <h:outputText value="#{usuarios.celular}" />
+        </p:column>
+        <p:column headerText="Sexo:">
+            <h:outputText value="#{usuarios.sexo}" />
+        </p:column>
+        <p:column headerText="Pais origem">
+            <h:outputText value="#{usuarios.paisOrigem}" />
+        </p:column>
+        <p:column headerText="Senha">
+            <h:outputText value="#{usuarios.senha}" />
+        </p:column>
+    </p:dataTable>
+		<p:commandButton value="Excluir" action="#{UsuarioBean.excluir}" update="messages, form"/>
+		<p:commandButton value="Alterar" action="#{UsuarioBean.alterar}" update="messages, form"/>
+		<p:commandButton value="Voltar" action="#{UsuarioBean.voltar}" update="messages, form"/>
+	</h:form>
+</h:body>
+</html>

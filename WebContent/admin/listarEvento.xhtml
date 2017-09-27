@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Listar eventos</title>
+</h:head>
+<h:body>	
+	<h:form id="form">
+	<p:messages id="messages" />
+	<p:dataTable var="eventos" value="#{EventoBean.listEvento}" selectionMode="single"  selection="#{EventoBean.eventoSelecionado}" rowKey="#{eventos.idEvento}">
+        <f:facet name="header">
+            Lista de eventos
+        </f:facet>
+        <p:column headerText="Id">
+            <h:outputText value="#{eventos.idEvento}" />
+        </p:column>
+        <p:column headerText="Nome:">
+            <h:outputText value="#{eventos.nome}" />
+        </p:column>
+        <p:column headerText="Data Inicio">
+            <h:outputText value="#{eventos.dataInicio}" />
+        </p:column>
+        <p:column headerText="Data Termino:">
+            <h:outputText value="#{eventos.dataTermino}" />
+        </p:column>
+        <p:column headerText="Empresa Responsavel:">
+            <h:outputText value="#{eventos.empresaResponsavel}" />
+        </p:column>
+        <p:column headerText="Local:">
+            <h:outputText value="#{eventos.local.nome}" />
+        </p:column>
+        <p:column headerText="Modalidade:">
+            <h:outputText value="#{eventos.modalidade.tipo}" />
+        </p:column>
+        <p:column headerText="Valor Ingresso:">
+            <h:outputText value="#{eventos.valorIngressoEvento}" />
+        </p:column>
+        
+    </p:dataTable>
+		<p:commandButton value="Excluir" action="#{EventoBean.excluir}" update="messages, form"/>
+		<p:commandButton value="Alterar" action="#{EventoBean.alterar}" update="messages, form"/>
+		<p:commandButton value="Voltar" action="#{EventoBean.voltar}" update="messages, form"/>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastro de usuário</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</h:head>
+<h:body>
+	<h:form>
+	
+		<p:wizard flowListener="#{UsuarioBean.onFlowProcess}">
+        <p:tab id="usuario" title="Usuario">
+            <p:panel header="Dados do usuário">
+                <p:messages id="messages"/>
+                <h:panelGrid columns="2" columnClasses="label, value">
+                
+                    <p:outputLabel for="nome" value="Nome:" /><br/>
+            		<p:inputText id="nome" value="#{UsuarioBean.usuario.nome}" required="true" requiredMessage="O nome é obrigatório" placeholder="Nome completo"/><br/>
+ 					
+ 					<p:outputLabel for="sexo" value="Sexo:" /><br/>
+            		<p:selectOneRadio id="sexo" value="#{UsuarioBean.usuario.sexo}" required="true" requiredMessage="O sexo é obrigatório">
+            		<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+            		<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+        			</p:selectOneRadio><br/>
+        		
+                    <p:outputLabel for="cpf" value="CPF:"/><br/>
+           			<p:inputMask id="cpf" value="#{UsuarioBean.usuario.cpf}" mask="999.999.999-99"  required="true" requiredMessage="O CPF é obrigatório" placeholder="Ex. 111.111.111-11"/><br/>
+ 
+                    <p:outputLabel for="dataNascimento" value="Data de Nascimento:"/><br/>
+            		<p:calendar id="dataNascimento" value="#{UsuarioBean.usuario.dataNascimento}" required="true" pattern="dd-MM-yyyy" mask="true" requiredMessage="A data de nascimento é obrigatória"/><br/>
+                	
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+ 
+        <p:tab id="endereco" title="Endereço">
+            <p:panel header="Endereço">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+            	
+            	<p:outputLabel for="estado" value="Estado:" /><br/>
+            	<p:selectOneMenu id="estado" value="#{UsuarioBean.usuario.endereco.estado}" required="true" requiredMessage="O estado é obrigatório">
+            		<f:selectItem itemLabel="Selecione" itemValue="" />
+            		<f:selectItem itemLabel="AC" itemValue="Acre"/>
+            		<f:selectItem itemLabel="AL" itemValue="Alagoas" />
+            		<f:selectItem itemLabel="AP" itemValue="Amapá" />
+            		<f:selectItem itemLabel="AM" itemValue="Amazonas"/>
+            		<f:selectItem itemLabel="BA" itemValue="Bahia" />
+            		<f:selectItem itemLabel="CE" itemValue="Ceará" />
+            		<f:selectItem itemLabel="DF" itemValue="Distrito Federal"/>
+            		<f:selectItem itemLabel="ES" itemValue="Espirito Santo" />
+            		<f:selectItem itemLabel="GO" itemValue="Goias" />
+            		<f:selectItem itemLabel="MA" itemValue="Maranhão"/>
+            		<f:selectItem itemLabel="MT" itemValue="Mato Grosso" />
+            		<f:selectItem itemLabel="MS" itemValue="Mato Grosso do Sul" />
+            		<f:selectItem itemLabel="MG" itemValue="Minas Gerais"/>
+            		<f:selectItem itemLabel="PA" itemValue="Pará" />
+            		<f:selectItem itemLabel="PB" itemValue="Paraíba" />
+            		<f:selectItem itemLabel="PR" itemValue="Paraná"/>
+            		<f:selectItem itemLabel="PE" itemValue="Pernambuco" />
+            		<f:selectItem itemLabel="PI" itemValue="Piaui" />
+            		<f:selectItem itemLabel="RJ" itemValue="Rio de Janeiro"/>
+            		<f:selectItem itemLabel="RN" itemValue="Rio Grande do Norte" />
+            		<f:selectItem itemLabel="RS" itemValue="Rio Grande do Sul" />
+            		<f:selectItem itemLabel="RO" itemValue="Rondônia"/>
+            		<f:selectItem itemLabel="RR" itemValue="Roraima" />
+            		<f:selectItem itemLabel="SC" itemValue="Santa Catarina" />
+            		<f:selectItem itemLabel="SP" itemValue="São Paulo"/>
+            		<f:selectItem itemLabel="SE" itemValue="Sergipe" />
+            		<f:selectItem itemLabel="TO" itemValue="Tocantins" />
+            	</p:selectOneMenu><br/>
+            	
+                    <p:outputLabel for="cidade" value="Cidade:" /><br/>
+ 					<p:inputText id="cidade" value="#{UsuarioBean.usuario.endereco.cidade}" required="true" requiredMessage="A cidade é obrigatória"/><br/>
+ 					
+                    <p:outputLabel for="bairro" value="Bairro:" /><br/>
+ 					<p:inputText id="bairro" value="#{UsuarioBean.usuario.endereco.bairro}" required="true" requiredMessage="O bairro é obrigatório"/><br/>
+ 
+                    <p:outputLabel for="rua" value="Rua:" /><br/>
+ 					<p:inputText id="rua" value="#{UsuarioBean.usuario.endereco.rua}" required="true" requiredMessage="A rua é obrigatória" placeholder="Ex. Rua x; Servidão x; Estrada x;"/><br/>
+ 
+                    <p:outputLabel for="cep" value="CEP:" /><br/>
+ 					<p:inputMask id="cep" value="#{UsuarioBean.usuario.endereco.cep}" required="true" requiredMessage="O cep é obrigatório" mask="99999-999" placeholder="Ex. 12345-678"/><br/>
+                
+                	<p:outputLabel for="complemento" value="Complemento:" /><br/>
+ 					<p:inputText id="complemento" value="#{UsuarioBean.usuario.endereco.complemento}" required="true" requiredMessage="O complemento é obrigatório" placeholder="Ex. Casa, apartamento"/><br/>
+                	
+                	<p:outputLabel for="numero" value="Numero:" /><br/>
+ 					<p:inputText id="numero" value="#{UsuarioBean.usuario.endereco.numero}" required="true" requiredMessage="O número é obrigatório" placeholder="Ex. 848;"/><br/>
+ 					
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+        
+        <p:tab id="contato" title="Contato">
+            <p:panel header="Contato">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                
+                	<p:outputLabel for="email" value="E-mail:" /><br/>
+            		<p:inputText id="email" value="#{UsuarioBean.usuario.email}" required="true" requiredMessage="O E-mail é obrigatório" placeholder="exemplo@exemplo.com"/><br/>
+            		
+            		<p:outputLabel for="celular" value="Celular: " /><br/>
+            		<p:inputMask id="celular" value="#{UsuarioBean.usuario.celular}" required="true" requiredMessage="O número de celular é obrigatório" mask="(99)9999-9999"/><br/>
+            		
+            		<p:outputLabel for="telefone" value="Telefone Residencial: " /><br/>
+            		<p:inputMask id="telefone" value="#{UsuarioBean.usuario.telefoneResidencial}" mask="(99)9999-9999"/>
+                	
+                </h:panelGrid>
+            </p:panel>
+        </p:tab>
+         
+        <p:tab id="confirma" title="Confirmação">
+            <p:panel header="Confirmação">
+                <h:panelGrid id="confirmacao" columns="3" columnClasses="grid,grid,grid">
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Nome: " />
+                        <h:outputText value="#{UsuarioBean.usuario.nome}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="CPF: " />
+                        <h:outputText value="#{UsuarioBean.usuario.cpf}" styleClass="outputLabel"/>
+                        
+                        <h:outputText value="E-Mail: " />
+                        <h:outputText value="#{UsuarioBean.usuario.email}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="Data de Nascimento: " />
+                        <h:outputText value="#{UsuarioBean.usuario.dataNascimento}" styleClass="outputLabel"/>
+                        
+                        
+                    </h:panelGrid>
+ 
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                        <h:outputText value="Cidade: " />
+                        <h:outputText value="#{UsuarioBean.usuario.endereco.cidade}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="Bairro: " />
+                        <h:outputText value="#{UsuarioBean.usuario.endereco.bairro}" styleClass="outputLabel"/>
+ 
+                        <h:outputText value="Rua: " />
+                        <h:outputText value="#{UsuarioBean.usuario.endereco.rua}" styleClass="outputLabel"/>
+                        
+                        <h:outputText value="CEP: " />
+                        <h:outputText value="#{UsuarioBean.usuario.endereco.cep}" styleClass="outputLabel"/>
+                        
+                        <h:outputText value="Complemento: " />
+                        <h:outputText value="#{UsuarioBean.usuario.endereco.complemento}" styleClass="outputLabel"/>
+                        
+                        <h:outputText value="Número: " />
+                        <h:outputText value="#{UsuarioBean.usuario.endereco.numero}" styleClass="outputLabel"/>
+                    </h:panelGrid>
+ 
+                    <h:panelGrid columns="2" columnClasses="label, value">
+                    <p:outputLabel for="senha" value="Senha:" /><br/>
+            		<p:password id="senha" value="#{UsuarioBean.usuario.senha}" feedback="true" required="true" requiredMessage="A senha é obrigatória"/><br/>
+            	
+		            <p:outputLabel for="confirmaSenha" value="Confirmar senha:" /><br/>
+		            <p:password id="confirmaSenha" value="#{UsuarioBean.confirmaSenha}" required="true" requiredMessage="A confirmação da senha é obrigatória"/><br/><br/><br/>
+		            
+		            <p:commandButton value="Salvar" action="#{UsuarioBean.salvar()}" update="messages"/>
+		            
+                    </h:panelGrid>
+                </h:panelGrid>
+ 
+                
+            </p:panel>
+        </p:tab>
+    </p:wizard>
+	</h:form>	
+</h:body>
+</html>

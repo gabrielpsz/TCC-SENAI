@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="tccsvio">
+	    <!-- Define que a implementação de JPA 2 que estamos utilizando é o Hibernate -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		
+		<!-- Início da definição dos nomes das classes que definem as entidades -->
+		<class>modelo.</class>
+		<!-- Término da definição dos nomes das classes que definem as entidades -->
+		
+		<properties>
+		    <!-- Propriedades do Hibernate -->
+		    <!-- Define qual variação do SQL será utilizada -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<!-- Valida e exporta o esquema DDL para a base de dados -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<!-- Define quando mostrar no log as consultas SQL geradas -->
+			<property name="hibernate.show_sql" value="true" />
+			<!-- Formata o log das consultas SQL geradas -->
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- Propriedades JPA -->
+			<!-- Nome completo da classe do driver de conexão -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<!-- Definição da localização do banco e o nome da base -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/tccsvio" />
+			<!-- Definição do usuário do banco de dados -->
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<!-- Definição da senha do usuário -->
+			<property name="javax.persistence.jdbc.password" value="" />
+		</properties>
+	</persistence-unit>
+</persistence>

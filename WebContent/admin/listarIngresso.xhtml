@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Listar ingressos</title>
+</h:head>
+<h:body>	
+	<h:form id="form">
+	<p:messages id="messages" />
+	<p:dataTable var="ingressos" value="#{IngressoBean.listIngresso}" selectionMode="single"  selection="#{IngressoBean.ingressoSelecionado}" rowKey="#{ingressos.idIngresso}">
+        <f:facet name="header">
+            Lista de ingressos
+        </f:facet>
+        <p:column headerText="Id">
+            <h:outputText value="#{ingressos.idIngresso}" />
+        </p:column>
+        <p:column headerText="Evento:">
+            <h:outputText value="#{ingressos.evento.nome}" />
+        </p:column>
+        <p:column headerText="Quantidade">
+            <h:outputText value="#{ingressos.quantidade}" />
+        </p:column>
+        
+    </p:dataTable>
+		<p:commandButton value="Excluir" action="#{IngressoBean.excluir}" update="messages, form"/>
+		<p:commandButton value="Alterar" action="#{IngressoBean.alterar}" update="messages, form"/>
+		<p:commandButton value="Voltar" action="#{IngressoBean.voltar}" update="messages, form"/>
+	</h:form>
+</h:body>
+</html>

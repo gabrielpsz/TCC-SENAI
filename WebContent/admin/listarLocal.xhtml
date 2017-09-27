@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Listar locais</title>
+</h:head>
+<h:body>	
+	<h:form id="form">
+	<p:messages id="messages" />
+	<p:dataTable var="locais" value="#{LocalBean.listLocal}" selectionMode="single"  selection="#{LocalBean.localSelecionado}" rowKey="#{locais.idLocal}">
+        <f:facet name="header">
+            Lista de locais
+        </f:facet>
+        <p:column headerText="Id">
+            <h:outputText value="#{locais.idLocal}" />
+        </p:column>
+        <p:column headerText="Cidade:">
+            <h:outputText value="#{locais.cidade}" />
+        </p:column>
+        <p:column headerText="Bairro:">
+            <h:outputText value="#{locais.bairro}" />
+        </p:column>
+        <p:column headerText="Cep:">
+            <h:outputText value="#{locais.cep}" />
+        </p:column>
+        <p:column headerText="Nome:">
+            <h:outputText value="#{locais.nome}" />
+        </p:column>
+        
+    </p:dataTable>
+		<p:commandButton value="Excluir" action="#{LocalBean.excluir}" update="messages, form"/>
+		<p:commandButton value="Alterar" action="#{LocalBean.alterar}" update="messages, form"/>
+		<p:commandButton value="Voltar" action="#{LocalBean.voltar}" update="messages, form"/>
+	</h:form>
+</h:body>
+</html>

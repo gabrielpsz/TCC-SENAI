@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Cadastro de locais</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel id="panel" header="Cadastro de locais" style="margin-bottom:20px">
+		<p:messages id="messages" />
+        	<h:panelGrid columns="2">
+        	
+            <p:outputLabel for="cidade" value="Cidade:" /><br/>
+            	<p:inputText id="cidade" value="#{LocalBean.local.cidade}" required="true" requiredMessage="A cidade é obrigatória"/><br/>
+            	
+            <p:outputLabel for="bairro" value="Bairro:"/><br/>
+            	<p:inputText id="bairro" value="#{LocalBean.local.bairro}" required="true" requiredMessage="O bairro é obrigatório"/><br/>
+            	
+            <p:outputLabel for="cep" value="CEP:" /><br/>
+            	<p:inputMask id="cep" value="#{LocalBean.local.cep}" mask="99999-999" required="true" requiredMessage="O CEP é obrigatório"/><br/>
+            	
+            <p:outputLabel for="nome" value="Nome:"/><br/>
+				<p:inputText id="nome" value="#{LocalBean.local.nome}" required="true" requiredMessage="O nome é obrigatório"/><br/>
+            	     
+            </h:panelGrid>
+       </p:panel>
+            <p:commandButton value="Cadastrar" update="panel" action="#{LocalBean.salvar}" />
+            <p:commandButton value="Voltar" update="panel" action="#{LocalBean.voltar}" immediate="true"/>	    	
+	</h:form>	
+</h:body>
+</html>

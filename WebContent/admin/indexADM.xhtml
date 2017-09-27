@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="css/bootstrap.css"/>
+<title>Página principal</title>
+</h:head>
+<h:body>
+	<h:form>
+		<div id="primefaces">
+			<p:messages id="messages" />
+			<p:panel id="panelLocal" header="Controle local" style="margin-bottom:20px">
+				<p:commandButton id="relatorioUsuario" value="Gerar relatório" action="#{UsuarioBean.getGerarRelatorio}"/><br/><br/>
+				<p:commandButton id="cadastroLocal" value="Cadastrar local" action="#{LocalBean.cadastroLocal}" /><br/><br/>
+				<p:commandButton id="relatorioLocal" value="Gerar relatório" action="#{LocalBean.getGerarRelatorio}"/><br/><br/>
+				<p:commandLink value="Mostrar todos locais" action="#{LocalBean.buscarTodos}"/><br/><br/>
+				<hr/>
+				ID Local: <p:inputText id = "idLocal" value = "#{LocalBean.local.idLocal}" converterMessage="O id deve ser um número"/>
+				<p:commandButton value = "Buscar" action="#{LocalBean.buscarPorId}" /><br/><br/>
+				Cidade: <p:inputText id = "cidadeLocal" value = "#{LocalBean.local.cidade}" />
+				<p:commandButton value="Buscar" action="#{LocalBean.buscarPorCidade}" /><br/><br/>
+				CEP: <p:inputMask id="cepLocal" value="#{LocalBean.local.cep}" mask="99999-999"/>
+				<p:commandButton value="Buscar" action="#{LocalBean.buscarPorCep}"/><br/><br/>
+			</p:panel>
+			<p:panel id="panelModalidade" header="Controle modalidade" style="margin-bottom:20px">
+				<p:commandButton id="cadastroModalidade" value="Cadastrar modalidade" action="#{ModalidadeBean.cadastroModalidade}" /><br/><br/>
+				<p:commandButton id="relatorioModalidade" value="Gerar relatório" action="#{ModalidadeBean.getGerarRelatorio}"/><br/><br/>
+				<p:commandLink value="Mostrar todas modalidades" action="#{ModalidadeBean.buscarTodos}"/><br/><br/>
+				<hr/>
+				ID Modalidade: <p:inputText id="idModalidade" value="#{ModalidadeBean.modalidade.idModalidade}" converterMessage="O id deve ser um número"/>
+				<p:commandButton value = "Buscar" action="#{ModalidadeBean.buscarPorId}" /><br/><br/>
+				Tipo: <p:inputText id="tipoModalidade" value="#{ModalidadeBean.modalidade.tipo}" />
+				<p:commandButton value = "Buscar" action="#{ModalidadeBean.buscarPorTipo}" /><br/><br/>
+			</p:panel>
+			<p:panel id="panelEvento" header="Controle evento" style="margin-bottom:20px">
+				<p:commandButton id="cadastroEvento" value="Cadastrar evento" action="#{EventoBean.cadastroEvento}"/><br/><br/>
+				<p:commandButton id="relatorioEvento" value="Gerar relatório" action="#{EventoBean.getGerarRelatorio}"/><br/><br/>
+				<p:commandLink value="Mostrar todos eventos" action="#{EventoBean.buscarTodos}"/><br/><br/>
+				<hr/>
+				ID Evento: <p:inputText id="idEvento" value="#{EventoBean.evento.idEvento}" converterMessage="O id deve ser um número"/>
+				<p:commandButton value="Buscar" action="#{EventoBean.buscarPorId}"/><br/><br/>
+				Nome: <p:inputText id="nomeEvento" value="#{EventoBean.evento.nome}" />
+				<p:commandButton value = "Buscar" action="#{EventoBean.buscarPorNome}" /><br/><br/>
+			</p:panel>
+			<p:panel id="panelIngresso" header="Controle ingresso" style="margin-bottom:20px">
+				<p:commandLink value="Mostrar todos ingressos" action="#{IngressoBean.buscarTodos}"/><br/><br/>
+				<hr/>
+			</p:panel>
+			<hr/>
+		</div>
+	</h:form>
+	
+	
+	
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</h:body>
+</html>

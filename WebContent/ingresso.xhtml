@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Compra</title>
+</h:head>
+<h:body>	
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.jsf">SVIO</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        	
+          <form class="navbar-form navbar-right" role="form">
+          <h:panelGrid id="teste">
+          	<h:form rendered="#{!loginBean.logado}" id="login">
+            <div class="form-group">
+	              <p:inputText placeholder="Email" id="email_id" value="#{loginBean.login}" required="true" requiredMessage="O Email é obrigatório" />
+	            </div>
+	            <div class="form-group">
+	              <p:password placeholder="Senha" id="senha_id" value="#{loginBean.senha}" required="true" requiredMessage="A Senha é obrigatória" />
+	            </div>
+	             <p:commandButton value="Entrar" action="#{loginBean.doLogin}" />
+	             <p:commandButton value="Cadastre-se" action="#{UsuarioBean.cadastroUsuario}" immediate="true"/>
+             </h:form>
+             <h:form rendered="#{loginBean.logado}" id="logout">
+	             	<h:outputText value="Bem vindo, #{loginBean.usuarioLogado.nome}" />
+	             	<p:commandButton value="Logout" action="#{loginBean.logout}" update=":teste" />
+             </h:form>
+             </h:panelGrid>
+          </form>  
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+    
+    <div id="ingressoComprado">
+	    <h:form>
+			<p:panel id="panel" header="Ingresso" style="margin-bottom:20px">
+			<p:messages id="messages" />
+	        	<h:panelGrid columns="2">
+	        	 	
+	        	 	
+	        	 	<p:outputLabel for="evento" value="Evento:" /><br/>
+				<p:selectOneMenu disabled="true" id="evento" value="#{IngressoBean.ingresso.evento}" required="true" requiredMessage="O evento é obrigatório" >
+            		<f:selectItem itemLabel="#{EventoBean.eventoSelecionado.nome}" itemValue="#{EventoBean.eventoSelecionado.nome}" />
+            	</p:selectOneMenu><br/>
+	        	 	
+	        	 	<p:outputLabel for="idComprador" value="ID Comprador:" /><br/>
+				<p:selectOneMenu disabled="true" id="idComprador" value="#{IngressoBean.ingresso.idComprador}" required="true" requiredMessage="O ID do comprador é obrigatório" >
+            		<f:selectItem itemLabel="#{loginBean.usuarioLogado.idUsuario}" itemValue="#{loginBean.usuarioLogado.idUsuario}" />
+            	</p:selectOneMenu><br/>
+	        	 	
+	        	 	<p:outputLabel value="Email Comprador:"/>
+	        	 	<p:inputText value="#{IngressoBean.ingresso.emailComprador}" required="true" requiredMessage="O email do comprador é obrigatório"/>
+	        	 	
+	        	 	<p:outputLabel value="Senha Comprador:"/>
+	        	 	<p:inputText value="#{IngressoBean.confirmaSenha}" required="true" requiredMessage="A confirmação da senha é obrigatória"/>           	
+	        
+	  
+	            </h:panelGrid>
+	       </p:panel>
+	       
+	            <p:commandButton value="Comprar" update="panel" action="#{IngressoBean.comprar}" />	    
+	            <p:commandButton value="Voltar" update="panel" action="#{index}" immediate="true"/>	
+	            
+		</h:form>	
+	 </div>
+	    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <footer class="footer">
+      <div class="container" id="footer">
+        <p class="text-muted" >todos os direitos reservados a SVIO - 2014</p>
+      </div>
+    </footer>
+    
+    
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+</h:body>
+</html>

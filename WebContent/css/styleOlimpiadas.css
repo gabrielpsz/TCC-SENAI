@@ -1,0 +1,33 @@
+@CHARSET "ISO-8859-1";
+#menuH {
+	margin-top: 100px;
+	width: 705px;
+	margin-left: 450px;
+}
+body {
+	background-image: url("../img/wallpaperOlimpiadas.jpeg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+}
+#conteudo {
+	margin-left: 150px;
+}
+#infoEvento {
+	margin-left: 100px;
+	
+}
+
+#btnComprar {
+	margin-left: 130px;
+}
+#jumbo {
+	padding-bottom: 300px;
+	margin-right: 130px;
+}
+#formaPagamento {
+	margin-left: 350px;
+}
+#teste{
+	color: white;
+}
